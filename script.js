@@ -1,86 +1,110 @@
 const gridContainer = document.querySelector(".grid-container");
+const newBookBtn = document.querySelector(".btn");
+const submitBtn = document.querySelector(".submit-button");
+const form = document.querySelector(".form");
 
 let myLibrary = [];
 
 function Book(Author, Title, Pages, Status) {
-  // the constructor...
+  // the constructor
   this.Author = Author;
   this.Title = Title;
   this.Pages = Pages;
   this.Status = Status;
-}
-
-const book1 = new Book("Andrea Boccini", "Nel Verde", 345, "Read");
-const book2 = new Book("Mattia Onoro", "Mare", 145, "Not read");
-const book3 = new Book("Ema Loru", "Nel Verde", 345, "Read");
-const book4 = new Book("Klaus Menta", "Mare", 145, "Not read");
-const book5 = new Book("Mango Bocco", "Nel Verde", 345, "Read");
-const book6 = new Book("Mat Ono", "Mare", 145, "Not read");
-
-
-function addBookToLibrary(obj1, obj2, obj3, obj4, obj5, obj6) {
-  // do stuff here
   
-  myLibrary.push(obj1, obj2, obj3, obj4, obj5, obj6);
-  return myLibrary;
-
 }
-
-let obj1 = book1;
-let obj2 = book2;
-let obj3 = book3;
-let obj4 = book4;
-let obj5 = book5;
-let obj6 = book6;
-
-let number = 0;
-
-console.log(addBookToLibrary(obj1, obj2, obj3, obj4, obj5, obj6));
-
-for(books of myLibrary) {
-
-    number++;
     
-    const gridItem = document.createElement("div");
-    gridItem.classList.add("grid-item");
+// make form appear upon button click
+newBookBtn.addEventListener("click", () => {
+    document.querySelector(".form").style.display = 'block';
+})
+
+// push new book into array myLibrary
+function addBookToLibrary(newBook) {
+    myLibrary.push(newBook);
+    return myLibrary;
+  }
+
+
+// input new book with form 
+submitBtn.addEventListener("click", (e) => {
+
+    e.preventDefault();
+
+    let Author = document.getElementById("author").value;
+    let Title = document.getElementById("title").value;
+    let Pages = document.getElementById("pages").value;
+    let Status = document.getElementById("status").value;
     
-    const bookTitle = document.createElement("h3");
-    bookTitle.classList.add("book-title");
-    bookTitle.textContent = `${"Book"} ${number}`;
-    gridItem.appendChild(bookTitle);
+    let newBook = new Book(Author, Title, Pages, Status);
 
-    const book = document.createElement("div");
-    book.classList.add("book");
-    gridItem.appendChild(book);
+    //push book into array
+    addBookToLibrary(newBook);
 
-    const removeBtn = document.createElement("button");
-    removeBtn.classList.add("remove-button");
-    removeBtn.textContent = "Remove this book from the library";
-    gridItem.appendChild(removeBtn);
+    // show books in a grid
+    createNewGrid();
 
-    gridContainer.appendChild(gridItem);
+})
 
-    console.log(gridItem);
+function createNewGrid() {
 
+    for(books of myLibrary) {
 
-    for(let key in books) {
-        if(Object.prototype.hasOwnProperty.call(books, key)) {
-            
-            const bookDetails = document.createElement("div");
-            bookDetails.classList.add("book-details");
-            bookDetails.textContent = key + ":" + " " + books[key];
-            book.appendChild(bookDetails);
-          
+        // loop through array and create grid-items
+        const gridItem = document.createElement("div");
+        gridItem.classList.add("grid-item");
+        gridItem.dataset.test= "data";
+        
+        const bookTitle = document.createElement("h3");
+        bookTitle.classList.add("book-title");
+        bookTitle.textContent = `${"Book"}`;
+        gridItem.appendChild(bookTitle);
+
+        const book = document.createElement("div");
+        book.classList.add("book");
+        gridItem.appendChild(book);
+
+        const removeBtn = document.createElement("button");
+        removeBtn.classList.add("remove-button");
+        removeBtn.textContent = "remove from library";
+        gridItem.appendChild(removeBtn);
+
+        gridContainer.appendChild(gridItem);
+
+        for(let key in books) {
+            //loop through object properties and add book details to book item
+            if(Object.prototype.hasOwnProperty.call(books, key)) {
+                
+                const bookDetails = document.createElement("div");
+                bookDetails.classList.add("book-details");
+                bookDetails.textContent = key + ":" + " " + books[key];
+                book.appendChild(bookDetails);
+        
+            }
         }
+        // create button to change status of read
+        const changeStatus = document.createElement("button");
+        changeStatus.classList.add("change-status");
+        changeStatus.textContent = "change status"
+        book.appendChild(changeStatus);
+        
+        // remove grid item from array
+        removeBtn.addEventListener("click", () => {
+        gridItem.remove();    
+        })
+
     }
-
-    const changeStatus = document.createElement("button");
-    changeStatus.classList.add("change-status");
-    changeStatus.textContent = "change status"
-    book.appendChild(changeStatus);
-
+    // reset form, make its display to none again and empty the array
+    form.reset();
+    document.querySelector(".form").style.display = 'none';
+    myLibrary = [];
 }
-    
+
+
+
+
+
+
 
 
 

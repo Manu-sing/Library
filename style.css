@@ -4,23 +4,76 @@
     box-sizing: border-box;
 }
 
+html {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    background-color: navajowhite;
+}
+
 
 .header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 20px;
 }
+
+.btn-title {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.form {
+    margin-top: 5px;
+    display: none;
+}
+
 
 .grid-container {
     padding: 20px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(auto-fill);
     gap: 10px;
     
+    
 }
 
-.book {
-    border: black solid 3px;
+.btn {
+    border: 2px solid peru;
+    border-radius: 0.5rem;
+    padding: 5px;
+    background-color: whitesmoke;
+    font-weight: 900;
 }
+
+#submit {
+    margin-top: 8px;
+    border: 1px solid peru;
+    border-radius: 0.3rem;
+    padding: 5px;
+    background-color: whitesmoke;
+    font-weight: 700;
+}
+
+.form-inputs {
+    width: 150px;
+    height: 25px;
+    border: 1px solid peru;
+    border-radius: 0.3rem;
+    padding: 5px;
+    background-color: whitesmoke;
+    
+}
+
+
+
+
+
+
 
