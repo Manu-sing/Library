@@ -10,6 +10,7 @@ html {
 
 body {
     background-color: navajowhite;
+    font-size: 28px;
 }
 
 
@@ -21,7 +22,7 @@ body {
 }
 
 .btn-title {
-    margin-top: 20px;
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,17 +30,38 @@ body {
 }
 
 .form {
-    margin-top: 5px;
+    margin-top: 10px;
     display: none;
+    position:fixed;
+    top: 0;
+    width: 14%;
+    margin-right: 10%;
+    margin-left: 76%;
+    z-index: 9;
+    font-size: 18px;
+    padding: 10px 15px;
+    
+    
+}
+
+.form-inputs {
+    width: 180px;
+    height: 30px;
+    border: 1px solid peru;
+    border-radius: 0.3rem;
+    padding: 5px;
+    background-color: whitesmoke;
+    
 }
 
 
 .grid-container {
-    padding: 20px;
+    padding: 70px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(auto-fill);
-    gap: 10px;
+    gap: 60px;
+    margin-top: 30px;
     
     
 }
@@ -47,29 +69,49 @@ body {
 .btn {
     border: 2px solid peru;
     border-radius: 0.5rem;
-    padding: 5px;
+    padding: 2px 30px;
     background-color: whitesmoke;
     font-weight: 900;
+    font-size: 20px;
+    
 }
 
 #submit {
     margin-top: 8px;
     border: 1px solid peru;
     border-radius: 0.3rem;
-    padding: 5px;
+    padding: 5px 15px;
     background-color: whitesmoke;
     font-weight: 700;
 }
 
-.form-inputs {
-    width: 150px;
-    height: 25px;
+
+
+.change-status,
+.remove-btn {
+    background-color: whitesmoke;
     border: 1px solid peru;
     border-radius: 0.3rem;
-    padding: 5px;
-    background-color: whitesmoke;
-    
+    padding: 7px;
+    margin-top: 5px;
+    font-weight: 700;
 }
+
+.book-container {
+    background-color: whitesmoke;
+    border: 2px solid peru;
+    border-radius: 0.3rem;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 15px;
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+}
+
+
 
 
 
