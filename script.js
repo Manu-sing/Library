@@ -21,13 +21,17 @@ const form = document.querySelector(".form");
 
 let myLibrary = [];
 
-function Book(Author, Title, Pages, Status) {
-  // the constructor
-  this.Author = Author;
-  this.Title = Title;
-  this.Pages = Pages;
-  this.Status = Status;  
+class Book {
+    constructor(Author, Title, Pages, Status) {
+        // the constructor
+        this.Author = Author;
+        this.Title = Title;
+        this.Pages = Pages;
+        this.Status = Status;  
+      }
 }
+
+
 
 // push new book into array myLibrary
 function addBookToLibrary() {
